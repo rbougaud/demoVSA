@@ -1,7 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+builder.Configuration.AddUserSecrets<Program>();
+builder.Services.AddControllers()
+                .ConfigureApiBehaviorOptions(options =>
+                {
+                    options.SuppressInferBindingSourcesForParameters = true;
+                });
+builder.Services.AddHttpClient().AddDistributedMemoryCache();
+builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
