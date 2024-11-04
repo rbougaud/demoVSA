@@ -1,0 +1,1 @@
+Démo architecture VSA simple
